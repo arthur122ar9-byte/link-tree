@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --text-color: #fafafa;
+    --main-border: 1px solid #fafafa;
+    --main-bg: linear-gradiend(rgb(82, 82, 82), #fafafa80);
+    --link-bg: rgb(255, 255, 255);
+    --link-bg-hover: #2b2b2b;
+    --link-text: #fafafa;
+    --link-border: 1px sold #fafafa80;
+    --bg-image: url('../assets/azul.jpg');
+}
+
+body.light {
+    --text-color: #fafafa;
+    --main-border: 1px solid #fafafa;
+    --main-bg: linear-gradiend(rgb(109, 109, 109), #95959580);
+    --link-bg: rgb(255, 255, 255);
+    --link-bg-hover: #2b2b2b;
+    --link-text: #fafafa;
+    --link-border: 1px sold #c5c5c580;
+    --bg-image: url('../assets/prediopreto.jpg');
+}
+
+body {
+    width: 100%;
+    height: 100dvh;
+    background-image: var(--bg-image);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+}
+
+main {
+    width: 300px;
+    padding: 1rem;
+    background-image: var(--main-bg);
+    border-radius: 1rem;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    position: relative;
+    backdrop-filter: blur(10px);
+    h1 {
+        margin-top: 60px;
+        text-align: center;
+        font-family: "Google Sans", sans-serif;
+    }
+    p {
+        color: var(--text-color);
+    }
+    .foto {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        .frente,
+        .verso {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-radius: 50%;
+            overflow: hidden;
+            backface-visibility: hidden;
+            transition: 300ms ease;
+            img {
+                width: 100%;
+                display: block;
+            }
+        }
+        .frente {
+            z-index: 2;
+        }
+        &:hover {
+            .frente {
+                transform: rotateX(180deg);
+            }
+            .verso {
+                transform: rotateY(360deg);
+            }
+        }
+    }
+    ul {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        li {
+            list-style-type: none;
+            a {
+                width: 100%;
+                height: 2rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: .5rem;
+                border: var(--link-border);
+                border-radius: .5rem;
+                border-color: #fafafa;
+                background-color: var(--link-bg-hover);
+                color: var(--link-text);
+                text-decoration: none;
+                transition: 300ms;
+                &:hover {
+                    background-color: var(--link-bg-hover);
+                    transform: scale(1.1)
+                }
+            }
+        }
+    }
+}
+
+.mode {
+    width: 2rem;
+    height: 1rem;
+    background-color: var(--link-bg-hover);
+    border: var(--main-border);
+    border-radius: 1rem;
+    position: relative;
+    input {
+        display: none;
+    }
+    .botao {
+        width: .89rem;
+        height: .89rem;
+        border-radius: 50%;
+        background-color: var(--text-color);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 300ms;
+        cursor: pointer;
+    }
+    input:checked+.botao {
+        transform: translateX(0.99rem);
+    }
+}
